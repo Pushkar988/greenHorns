@@ -1,0 +1,65 @@
+
+#src{
+    height: 100px !important;
+    width: 100px !important;
+}
+.col-sm-4:before,
+.col-sm-8:before {
+  content: '';
+  width: 0;
+}
+
+.col-sm-4:before,
+.col-sm-8:before,
+.ib {
+  white-space: normal;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+.col-sm-4:before {
+  padding-top: 100%;
+  /* makes expand to a square */
+}
+
+.col-sm-8:before {
+  padding-top: 50%;
+  /* makes a rectangle half the height of a square */
+}
+
+[class^="col"] {
+  white-space: nowrap;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 5px white;
+  padding: 0;
+  text-align: center;
+  background: url(http://lorempixel.com/400/200) tomato;
+  background-size: cover;
+}
+.row {
+    color: white;
+    text-shadow: 0 0 black, 0 0 2px black;
+  }
+  
+  .col-sm-4 {
+    background: gray;
+  }
+
+#emergency{
+    background-color: red;
+}
+#appointment{
+background-color: green;
+}
+#prescription{
+    background-color: burlywood;
+}
+#faq{
+    background-color: black;
+}
+#cal{
+    background-color:saddlebrown;
+}
+ 
+ 
