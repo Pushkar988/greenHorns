@@ -49,6 +49,7 @@ export class SpeechService {
 
             this.speechRecognition.onend = () => {
                 observer.complete();
+                this.speechRecognition.start();
             };
 
             this.speechRecognition.start();
@@ -59,6 +60,11 @@ export class SpeechService {
     DestroySpeechObject() {
         if (this.speechRecognition)
             this.speechRecognition.stop();
+    }
+
+    StartAgain() {
+        if (this.speechRecognition)
+            this.speechRecognition.start();
     }
 
     speak(text):Observable<any>{

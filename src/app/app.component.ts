@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
     user: User;
-
+    start=false;
     constructor(private accountService: AccountService,private http: HttpClient,
         private speechService: SpeechService) {
         this.accountService.user.subscribe(x => this.user = x);
@@ -18,32 +18,37 @@ export class AppComponent {
         this.accountService.logout();
     }
 
-    speechText = ""
+    speechText = "";
     speechUrl = " http://127.0.0.1:5000/speech";
-
-
-
     data = { "sender": "", "message": "" };
     ngOnInit(): void {
 
     }
 
+
     startListing() {
-        this.speechService.record().subscribe((res) => {
-            console.log(res);
-            this.speechText = res;
-            this.data.message = res;
-            console.log( this.data.message);
-            this.speak(this.speechText);
-            this.http.post('https://hopebot.azurewebsites.net/webhooks/rest/webhook', this.data)
-                .subscribe((res) => {
-                    console.log(res);
-                    this.speechText = res[0].text;
-                    this.speak(this.speechText)
+        return new Promise((resolve,reject)=>{
+            this.speechService.record().subscribe((res)=>{
+              if(!res){
+                  console.log("No Response...",res);
+                  return;
+              }  
+              console.log(res);
+              this.speechText = res;
+              this.data.message = res;
+              this.http.post('https://hopebot.azurewebsites.net/webhooks/rest/webhook',this.data)
+              .subscribe((res:any)=>{
+                console.log(res);
+                res.forEach((element)=>{
+                    this.speak(element.text);
                 })
-        }, error => {
-            console.log(error);
-            this.speechService.DestroySpeechObject();
+                
+              })
+            },error=>{
+              console.log(error);
+              this.speechService.DestroySpeechObject();
+              this.speechService.StartAgain();
+            })
         })
     }
 
@@ -66,8 +71,8 @@ export class AppComponent {
 
             // Set utterance properties
             utterance.voice = voice;
-            utterance.pitch = 2.0;
-            utterance.rate = 1.25;
+            utterance.pitch = 1.0;
+            utterance.rate = .70;
             utterance.volume = 1.0;
 
             // Speak the utterance
