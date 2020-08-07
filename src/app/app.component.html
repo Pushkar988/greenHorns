@@ -1,21 +1,86 @@
 ﻿<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a class="nav-item nav-link" routerLink="/speech" routerLinkActive="active">Speech</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-        <a class="nav-item nav-link" style="margin-left: 200px;"><p style="color: azure;">Welcome {{user.firstName}}!</p></a>
-    </div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" *ngIf="user">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLink="/speech" routerLinkActive="active">Speech</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <span><p style="color: azure;">Welcome {{user.firstName}}!</p></span>
 </nav>
 
-<!-- main app container -->
-<div class="app-container" [ngClass]="{ 'bg-light': user }">
+<nav class="navbar navbar-expand-sm navbar-light" *ngIf="user">
+  <div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <div id="speechGlobal">
+          <div style="text-align: center;">
+            <a>
+              <svg (click)="startListing()" class="icon icon-mic" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+              </svg>
+            </a>
+            <span id="realboxGlobal" type="search" autocomplete="off" spellcheck="false" aria-live="polite" autofocus="">Hi I am Hope, say something !</span>
+        </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  &lt;!&ndash; Brand &ndash;&gt;
+  <a class="navbar-brand" href="#">Navbar</a>
+
+  &lt;!&ndash; Toggler/collapsibe Button &ndash;&gt;
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  &lt;!&ndash; Navbar links &ndash;&gt;
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    </ul>
+  </div>
+</nav>-->
+<!--main app container-->
+<div class="app-container" class="container-fluid" [ngClass]="{ 'bg-light': user }">
     <alert></alert>
     <router-outlet></router-outlet>
 </div>
 
-
-<div class="text-center mt-4">
-    
-   
-</div>
+<nav class="navbar bg-dark navbar-dark" *ngIf="user">
+  <div>
+    <ul class="navbar-nav">
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/speech" routerLinkActive="active">Speech</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li> -->
+    </ul>
+  </div>
+</nav>

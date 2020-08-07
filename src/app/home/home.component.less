@@ -1,9 +1,10 @@
 
-#src{
-    height: 100px !important;
-    width: 100px !important;
-}
-.col-sm-4:before,
+/*#src {
+  height: 100px !important;
+  width: 100px !important;
+}*/
+
+/*.col-sm-4:before,
 .col-sm-8:before {
   content: '';
   width: 0;
@@ -20,12 +21,12 @@
 
 .col-sm-4:before {
   padding-top: 100%;
-  /* makes expand to a square */
+  !* makes expand to a square *!
 }
 
 .col-sm-8:before {
   padding-top: 50%;
-  /* makes a rectangle half the height of a square */
+  !* makes a rectangle half the height of a square *!
 }
 
 [class^="col"] {
@@ -41,25 +42,62 @@
     color: white;
     text-shadow: 0 0 black, 0 0 2px black;
   }
-  
+
   .col-sm-4 {
     background: gray;
-  }
+  }*/
+.container-tile {
+  display: flex;;
+  height: 45vh;
 
-#emergency{
-    background-color: red;
+  img {
+    max-width: 50%;
+    height: auto;
+    max-height: 50%;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    margin-top: 40px !important;
+    display: block;
+  }
+  .caption {
+    max-width: 50%;
+    height: auto;
+    max-height: 50%;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    margin-top: 20px !important;
+    display: block;
+    text-align: center;
+  }
 }
-#appointment{
-background-color: green;
+.appointment {
+  background: grey;
+  margin: 15px
 }
-#prescription{
-    background-color: burlywood;
+
+.report {
+  background: green;
+  margin: 15px
 }
-#faq{
-    background-color: black;
+
+.prescription {
+  background: grey;
+  margin: 15px
 }
-#cal{
-    background-color:saddlebrown;
+
+.emergency {
+  background: green;
+  margin: 15px
 }
- 
- 
+
+.faq {
+  background: grey;
+  margin: 15px
+}
+
+.cal {
+  background: green;
+  margin: 15px
+}
+
+
