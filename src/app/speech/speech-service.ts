@@ -49,7 +49,7 @@ export class SpeechService {
 
             this.speechRecognition.onend = () => {
                 observer.complete();
-                this.speechRecognition.start();
+                //this.speechRecognition.start();
             };
 
             this.speechRecognition.start();

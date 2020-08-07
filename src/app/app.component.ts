@@ -47,7 +47,7 @@ export class AppComponent {
             },error=>{
               console.log(error);
               this.speechService.DestroySpeechObject();
-              this.speechService.StartAgain();
+              //this.speechService.StartAgain();
             })
         })
     }
